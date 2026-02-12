@@ -13,7 +13,7 @@ const db = mysql.createConnection({
 });
 
 // This part saves the message
-app.post('/contact', (req, res) => {
+app.post('/submit', (req, res) => {
     const { name, email, message } = req.body;
     const sql = "INSERT INTO messages (user_name, user_email, message_text) VALUES (?, ?, ?)";
     
