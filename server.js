@@ -1,26 +1,22 @@
 const express = require('express');
-const mysql = require('mysql2');
+const { sql } = require('@vercel/postgres');
 const app = express();
-
 app.use(express.urlencoded({ extended: true }));
-
-// This connects to your MySQL
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root', 
-    password: '1416', // Type your MySQL password here
-    database: 'portfolio_db'
-});
-
-// This part saves the message
-app.post('/submit', (req, res) => {
+app.use(express.json());
+app.post('/submit', async (req, res) => {
     const { name, email, message } = req.body;
-    const sql = "INSERT INTO messages (user_name, user_email, message_text) VALUES (?, ?, ?)";
     
-    db.query(sql, [name, email, message], (err, result) => {
-        if (err) return res.send("Error!");
-        res.send("Success! Your message is in the database.");
-    });
+    try {
+
+        await sql`INSERT INTO contact_submissions (name, email, message) 
+                  VALUES (${name}, ${email}, ${message});`;
+        
+        res.send("Success! Your message is in the Neon database.");
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error saving to database!");
+    }
 });
 
-app.listen(3000, () => console.log('Server is running!'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}!`));

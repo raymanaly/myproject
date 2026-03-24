@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 20th Birthday, Pika! 🪷</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: radial-gradient(circle at center, #003366, #001f3f);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        /* 1. BIG CAKE & SPREAD OUT CANDLES */
+        .cake-container {
+            position: relative;
+            width: 300px;
+            margin: 20px auto;
+        }
+
+        .candle-row {
+            display: flex;
+            justify-content: space-around; /* Adds space between candles */
+            align-items: flex-end;
+            width: 260px;
+            margin: 0 auto -5px auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .candle-stick {
+            width: 10px;
+            height: 50px;
+            background: linear-gradient(to right, #b3e5fc, #81d4fa);
+            border-radius: 5px 5px 0 0;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .flame {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+        }
+
+        .cake-body {
+            width: 300px;
+            height: 140px;
+            background: #0056b3; 
+            border-radius: 20px;
+            box-shadow: 0 10px 0 #002d5a;
+        }
+
+        .icing {
+            width: 300px;
+            height: 45px;
+            background: #7FDBFF; 
+            border-radius: 20px 20px 50% 50%;
+        }
+
+        /* 2. FLOWER WITH STEM */
+        .flower-section {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .lotus-wrap {
+            position: relative;
+            width: 160px;
+            height: 180px;
+            margin: 0 auto;
+        }
+
+        .stem {
+            position: absolute;
+            width: 6px;
+            height: 100px;
+            background: #2e7d32; /* Dark Green Stem */
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .petal {
+            position: absolute;
+            width: 65px;
+            height: 110px;
+            background: rgba(179, 229, 252, 0.9);
+            border: 1px solid #7FDBFF;
+            border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+            left: 47px;
+            transform-origin: bottom center;
+            transform: scale(0);
+            transition: transform 4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .center-bud {
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            background: #fff59d;
+            border-radius: 50%;
+            bottom: 0;
+            left: 57px;
+            z-index: 15;
+            transform: scale(0);
+        }
+
+        /* 10 Petal Blooming */
+        .blooming .petal:nth-child(1) { transform: scale(1) rotate(-85deg); }
+        .blooming .petal:nth-child(2) { transform: scale(1) rotate(-65deg); }
+        .blooming .petal:nth-child(3) { transform: scale(1) rotate(-45deg); }
+        .blooming .petal:nth-child(4) { transform: scale(1) rotate(-25deg); }
+        .blooming .petal:nth-child(5) { transform: scale(1) rotate(0deg); }
+        .blooming .petal:nth-child(6) { transform: scale(1) rotate(25deg); }
+        .blooming .petal:nth-child(7) { transform: scale(1) rotate(45deg); }
+        .blooming .petal:nth-child(8) { transform: scale(1) rotate(65deg); }
+        .blooming .petal:nth-child(9) { transform: scale(1) rotate(85deg); }
+        .blooming .petal:nth-child(10) { transform: scale(1) rotate(15deg) scaleY(1.3); z-index: 5; }
+        .blooming .center-bud { transform: scale(1); transition: 3s delay 1s; }
+
+        /* 3. LIGHT BLUE ENVELOPE */
+        .envelope-wrapper {
+            display: none;
+            margin-top: 100px;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        .envelope {
+            position: relative;
+            width: 250px;
+            height: 150px;
+            background: #b2ebf2; /* Light Blue Shade */
+            margin: auto;
+        }
+
+        .envelope::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            z-index: 2;
+            border-top: 80px solid #80deea;
+            border-left: 125px solid transparent;
+            border-right: 125px solid transparent;
+            transform-origin: top;
+            transition: transform 0.6s;
+        }
+
+        .envelope.open::before {
+            transform: rotateX(180deg);
+        }
+
+        .letter {
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            width: 230px;
+            height: 130px;
+            background: white;
+            color: #333;
+            padding: 15px;
+            font-size: 0.85rem;
+            text-align: left;
+            transition: transform 0.6s;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .envelope.open .letter {
+            transform: translateY(-100px);
+            height: 200px;
+            z-index: 1;
+        }
+
+        .title { font-family: 'Dancing Script', cursive; font-size: 3.5rem; color: #7FDBFF; }
+        .btn { background: #39CCCC; color: white; border: none; padding: 12px 30px; border-radius: 50px; cursor: pointer; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="cake-section">
+            <h1 class="title">Blow out the candles!🎂</h1>
+            <div class="cake-container">
+                <div class="candle-row">
+                    <div class="candle-stick" onclick="blow(this)"><span class="flame">🔥</span></div>
+                    <div class="candle-stick" onclick="blow(this)"><span class="flame">🔥</span></div>
+                    <div class="candle-stick" onclick="blow(this)"><span class="flame">🔥</span></div>
+                    <div class="candle-stick" onclick="blow(this)"><span class="flame">🔥</span></div>
+                    <div class="candle-stick" onclick="blow(this)"><span class="flame">🔥</span></div>
+                </div>
+                <div class="cake-body"><div class="icing"></div></div>
+            </div>
+        </div>
+
+        <div id="main-content" class="flower-section">
+            <h1 class="title">Happy 20th Birthday!</h1>
+            <div class="lotus-wrap" id="lotus-box">
+
+                <script>
+    let count = 0;
+
+    function blow(el) {
+        // Find the flame inside the candle stick you clicked
+        const flame = el.querySelector('.flame');
+        
+        // Debug check: This will show up in your VS Code Debug Console
+        console.log("Candle clicked!", flame ? "Flame found" : "Flame NOT found");
+
+        if (flame && (flame.innerHTML === '🔥' || flame.innerText === '🔥')) {
+            // Change the flame to a "puff" of smoke
+            flame.innerHTML = '💨'; 
+            flame.style.opacity = '0.4'; // Make it look like it's fading
+            
+            count++;
+            console.log("Candles blown out so far:", count);
+
+            // Once all 5 are gone, show the flower for Pika!
+            if (count === 5) {
+                setTimeout(() => {
+                    document.getElementById('cake-section').style.display = 'none';
+                    document.getElementById('main-content').style.display = 'block';
+                    // Scroll to the flower automatically
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 800);
+            }
+        }
+    }
+
+    function startBloom() {
+        const lotusBox = document.getElementById('lotus-box');
+        lotusBox.classList.add('blooming');
+        
+        // Wait for the slow bloom animation, then show the envelope
+        setTimeout(() => {
+            const envelopeSection = document.getElementById('envelope-section');
+            envelopeSection.style.display = 'block';
+            envelopeSection.scrollIntoView({ behavior: 'smooth' });
+        }, 4000);
+    }
+
+    function openEnvelope() {
+        document.getElementById('envelope-id').classList.toggle('open');
+    }
+</script>
