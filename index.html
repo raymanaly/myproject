@@ -8,43 +8,45 @@
 </head>
 <body>
 
-    <header>
-        <img src="project profile.jpeg" alt="Ray's Profile Photo" class="profile-img">
-        <h1>Hi, I'm Manaly Ray!⚡</h1>
-        <p>Bachelor's of Computer Applications Student at <strong>Kristu Jayanti University</strong></p>
-        
-        <div class="tech-stack">
-            <span>Node.js</span> <span>PostgreSQL</span> <span>Python</span> <span>C Programming</span> <span>Git</span>
-        </div>
-    </header>
+    <div class="container">
 
-    <main>
-        <section id="about">
-            <h3>About Me 👨‍💻</h3>
-            <p>I am an <strong>aspiring computer applications student</strong> with a deep interest in both <strong>web development</strong> and <strong>game development</strong>. I enjoy building functional backends and exploring interactive environments.</p>
-        </section>
+        <header>
+            <img src="project profile.jpeg" alt="Ray's Profile Photo" class="profile-img">
+            <h1>Hi, I'm Manaly Ray!⚡</h1>
+            <p>Bachelor's of Computer Applications Student at <strong>Kristu Jayanti University</strong></p>
+            
+            <div class="tech-stack">
+                <span>Node.js</span> <span>PostgreSQL</span> <span>Python</span> <span>C Programming</span> <span>Git</span>
+            </div>
+        </header>
 
-        <section id="interests">
-            <h3>Beyond the Code 🏛️</h3>
-            <ul>
-                <li>📖 Diving into Greek Mythology, dystopian worlds, and classic thrillers.</li>
-                <li>🖥️ Researching the best components for PC building.</li>
-                <li>📸 Always ready to take a photograph of the next sunset.</li>
-            </ul>
-        </section>
+        <main>
+            <section id="about">
+                <h3>About Me 👨‍💻</h3>
+                <p>I am an <strong>aspiring computer applications student</strong> with a deep interest in both <strong>web development</strong> and <strong>game development</strong>. I enjoy building functional backends and exploring interactive environments.</p>
+            </section>
 
-        <section id="contact">
-            <h3>Let's Connect 🚀</h3>
-            <form id="contactForm">
-                <input type="text" id="name" placeholder="Your Name" required>
-                <input type="email" id="email" placeholder="Your Email" required>
-                <textarea id="message" rows="4" placeholder="Submit Project Details..." required></textarea>
-                <button type="submit" id="submitBtn">Submit Project Details 🚀</button>
-            </form>
-        </section>
-    </main>
+            <section id="interests">
+                <h3>Beyond the Code 🏛️</h3>
+                <ul>
+                    <li>📖 Diving into Greek Mythology, dystopian worlds, and classic thrillers.</li>
+                    <li>🖥️ Researching the best components for PC building.</li>
+                    <li>📸 Always ready to take a photograph of the next sunset.</li>
+                </ul>
+            </section>
 
-    <script>
+            <section id="contact">
+                <h3>Let's Connect 🚀</h3>
+                <form id="contactForm">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                    <textarea id="message" rows="4" placeholder="Submit Project Details..." required></textarea>
+                    <button type="submit" id="submitBtn">Submit Project Details 🚀</button>
+                </form>
+            </section>
+        </main>
+
+    </div> <script>
         const contactForm = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
 
