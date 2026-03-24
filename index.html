@@ -4,42 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manaly Ray | Portfolio</title>
-    <link rel="stylesheet" href="style.css"> </head>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
-    <section id="contact">
-        <h2>Let's Connect 🚀</h2>
-        <form id="contactForm">
-            <div class="input-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" placeholder="Enter your name" required>
-            </div>
+    <header>
+        <img src="project profile.jpeg" alt="Ray's Profile Photo" class="profile-img">
+        <h1>Hi, I'm Manaly Ray!⚡</h1>
+        <p>Bachelor's of Computer Applications Student at <strong>Kristu Jayanti University</strong></p>
+        
+        <div class="tech-stack">
+            <span>Node.js</span> <span>PostgreSQL</span> <span>Python</span> <span>C Programming</span> <span>Git</span>
+        </div>
+    </header>
 
-            <div class="input-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
-            </div>
+    <main>
+        <section id="about">
+            <h3>About Me 👨‍💻</h3>
+            <p>I am an <strong>aspiring computer applications student</strong> with a deep interest in both <strong>web development</strong> and <strong>game development</strong>. I enjoy building functional backends and exploring interactive environments.</p>
+        </section>
 
-            <div class="input-group">
-                <label for="message">Project Details:</label>
-                <textarea id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-            </div>
+        <section id="interests">
+            <h3>Beyond the Code 🏛️</h3>
+            <ul>
+                <li>📖 Diving into Greek Mythology, dystopian worlds, and classic thrillers.</li>
+                <li>🖥️ Researching the best components for PC building.</li>
+                <li>📸 Always ready to take a photograph of the next sunset.</li>
+            </ul>
+        </section>
 
-            <button type="submit" id="submitBtn">Submit Project Details 🚀</button>
-        </form>
-    </section>
+        <section id="contact">
+            <h3>Let's Connect 🚀</h3>
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" rows="4" placeholder="Submit Project Details..." required></textarea>
+                <button type="submit" id="submitBtn">Submit Project Details 🚀</button>
+            </form>
+        </section>
+    </main>
 
     <script>
         const contactForm = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
 
         contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault(); 
-
+            e.preventDefault();
             submitBtn.innerText = "Sending...";
             submitBtn.disabled = true;
 
-            // Collect the data from the inputs
             const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
@@ -47,26 +60,21 @@
             };
 
             try {
-                // This sends the data to your /submit route in server.js
                 const response = await fetch('/submit', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData)
                 });
 
                 if (response.ok) {
-                    alert("Success! Your details have been saved to the Neon database.");
-                    contactForm.reset(); // Clears the form
+                    alert("Success! Your message is in the Neon database.");
+                    contactForm.reset();
                 } else {
-                    alert("Oops! Something went wrong on the server.");
+                    alert("Server error. Check your Vercel logs!");
                 }
             } catch (error) {
-                console.error("Error:", error);
-                alert("Could not connect to the server.");
+                alert("Connection failed. Is the server running?");
             } finally {
-                // Reset button text
                 submitBtn.innerText = "Submit Project Details 🚀";
                 submitBtn.disabled = false;
             }
