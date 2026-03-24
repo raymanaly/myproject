@@ -3,84 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manaly Ray | Portfolio</title>
+    <title>Manaly's profile:D</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
-    
-    <div class="container">
 
-        <header>
-            <img src="project profile.jpeg" alt="Ray's Profile Photo" class="profile-img">
-            <h1>Hi, I'm Manaly Ray!⚡</h1>
-            <p>Bachelor's of Computer Applications Student at <strong>Kristu Jayanti University</strong></p>
-            
-            <div class="tech-stack">
-                <span>Node.js</span> <span>PostgreSQL</span> <span>Python</span> <span>C Programming</span> <span>Git</span>
+    <div class="main-wrapper">
+        
+        <aside class="discord-sidebar">
+            <div class="pfp-container">
+                <img src="project profile.jpeg" alt="Ray's Avatar" class="discord-pfp">
+                <div class="online-status"></div>
             </div>
-        </header>
+            
+            <header>
+                <h2>Manaly Ray </h2>
+                <p>ray.m she//her</p>
+            </header>
 
-        <main>
-            <section id="about">
-                <h3>About Me 👨‍💻</h3>
-                <p>I am an <strong>aspiring computer applications student</strong> with a deep interest in both <strong>web development</strong> and <strong>game development</strong>. I enjoy building functional backends and exploring interactive environments.</p>
+            <div class="sidebar-divider"></div>
+
+            
+                
+             <p>Diet coke enthusiast|BCA student|Aspiring developer|</p>
+            
+
+            <section class="tech-arsenal">
+                <h3>skills</h3>
+                <div class="stack-tags">
+                    <span>Node.js</span> <span>PgSQL</span> <span>Python</span> <span>C</span> <span>Git</span> <span>RDBMS</span> <span>MongoDB</span> 
+                </div>
             </section>
+<section id="about">
+                <div class="about-flex">
+                    <div class="pixel-cat-container">
+                <img src="pixel-cat.png.jpeg" alt="Pixel Cat" class="pixel-cat">
+                </div>
 
-            <section id="interests">
-                <h3>Beyond the Code 🏛️</h3>
-                <ul>
-                    <li>📖 Diving into Greek Mythology, dystopian worlds, and classic thrillers.</li>
-                    <li>🖥️ Researching the best components for PC building.</li>
-                    <li>📸 Always ready to take a photograph of the next sunset.</li>
-                </ul>
+        </aside>
+
+            <main class="content-view">
+            <nav class="top-nav">
+                <span>About_Me.txt</span>
+                <span>Experience.exe</span>
+                <span>Connect.bat</span>
+            </nav>
+
+            <section id="about">
+                <div class="about-flex">
+                    <div class="about-text">
+
+             
+                        <h3>Digital Me</h3>
+                        <p>I'm a passionate computer applications student exploring backend logic and immersive environments.I have always been interested in building something and this seems like the perfect way to use my skills.</p>
+
+                        <p>I'm dedicated to mastering the full stack of modern web development.</p>
+
+                        <p>Apart from web development and studies, I find myself drawn to books mostly friction,crime thiller and even greek mythology.</p>
+                    </div>
+                    
+                </div>
             </section>
 
             <section id="contact">
-                <h3>Let's Connect 🚀</h3>
+                <h3>Let's Connect</h3>
                 <form id="contactForm">
-                    <input type="text" id="name" placeholder="Your Name" required>
-                    <input type="email" id="email" placeholder="Your Email" required>
-                    <textarea id="message" rows="4" placeholder="Submit Project Details..." required></textarea>
-                    <button type="submit" id="submitBtn">Submit Project Details 🚀</button>
+                    <input type="text" id="name" placeholder="Username" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <textarea id="message" rows="3" placeholder="Message" required></textarea>
+                    <button type="submit" id="submitBtn">SEND!</button>
                 </form>
             </section>
         </main>
+    </div>
 
-    </div> <script>
-        const contactForm = document.getElementById('contactForm');
-        const submitBtn = document.getElementById('submitBtn');
-
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            submitBtn.innerText = "Sending...";
-            submitBtn.disabled = true;
-
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                message: document.getElementById('message').value
-            };
-
-            try {
-                const response = await fetch('/submit', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-
-                if (response.ok) {
-                    alert("Success! Your message is in the Neon database.");
-                    contactForm.reset();
-                } else {
-                    alert("Server error. Check your Vercel logs!");
-                }
-            } catch (error) {
-                alert("Connection failed. Is the server running?");
-            } finally {
-                submitBtn.innerText = "Submit Project Details 🚀";
-                submitBtn.disabled = false;
-            }
-        });
-    </script>
-</body>
+    </body>
 </html>
