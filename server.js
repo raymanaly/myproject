@@ -1,6 +1,7 @@
 const express = require('express');
 const { sql } = require('@vercel/postgres');
 const app = express();
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.post('/submit', async (req, res) => {
@@ -17,6 +18,3 @@ app.post('/submit', async (req, res) => {
         res.status(500).send("Error saving to database!");
     }
 });
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}!`));
